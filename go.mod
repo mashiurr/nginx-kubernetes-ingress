@@ -8,7 +8,7 @@ require (
 	github.com/cert-manager/cert-manager v1.13.2
 	github.com/dlclark/regexp2 v1.10.0
 	github.com/go-chi/chi/v5 v5.0.10
-	github.com/golang-jwt/jwt/v4 v4.5.0
+	github.com/golang-jwt/jwt/v4 v4.5.2
 	github.com/golang/glog v1.1.2
 	github.com/google/go-cmp v0.6.0
 	github.com/kr/pretty v0.3.1
