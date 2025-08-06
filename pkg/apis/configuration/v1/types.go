@@ -2,6 +2,7 @@ package v1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/util/intstr"
 )
 
 const (
@@ -788,6 +789,8 @@ type PolicySpec struct {
 	WAF *WAF `json:"waf"`
 	// The API Key policy configures NGINX to authorize requests which provide a valid API Key in a specified header or query param.
 	APIKey *APIKey `json:"apiKey"`
+  // The Cache Key defines a cache policy for proxy caching
+	Cache  *Cache  `json:"cache"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -1002,4 +1005,16 @@ type SuppliedIn struct {
 	Header []string `json:"header"`
 	// The location of the API Key as a query param. For example, $arg_apikey. Accepted variables are $arg_.
 	Query []string `json:"query"`
+}
+
+// Cache defines a cache policy for proxy caching.
+type Cache struct {
+	CacheZoneName         string               `json:"cacheZoneName"`
+	CacheZoneSize         string               `json:"cacheZoneSize"`
+	AllowedCodes          []intstr.IntOrString `json:"allowedCodes,omitempty"`
+	AllowedMethods        []string             `json:"allowedMethods,omitempty"`
+	Time                  string               `json:"time,omitempty"`
+	CachePurgeAllow       []string             `json:"cachePurgeAllow,omitempty"`
+	OverrideUpstreamCache bool                 `json:"overrideUpstreamCache,omitempty"`
+	Levels                string               `json:"levels,omitempty"` // Optional. Directory hierarchy for cache files (e.g., "1:2", "2:2", "1:2:2")
 }
