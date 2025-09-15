@@ -42,7 +42,7 @@ jobs:
           echo "sha_long=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
       - name: Send Notification
-        uses: 8398a7/action-slack@fbd6aa58ba854a740e11a35d0df80cb5d12101d8 # v3.15.1
+        uses: 8398a7/action-slack@77eaa4f1c608a7d68b38af4e3f739dcd8cba273e # v3.19.0
         with:
           status: custom
           custom_payload: |
