@@ -101,7 +101,7 @@ jobs:
           go-version-file: go.mod
 
       - name: Download Syft
-        uses: anchore/sbom-action/download-syft@78fc58e266e87a38d4194b2137a3d4e9bcaf7ca1 # v0.14.3
+        uses: anchore/sbom-action/download-syft@8e94d75ddd33f69f691467e42275782e4bfefe84 # v0.20.9
         if: github.ref_type == 'tag'
 
       - name: Install Cosign
