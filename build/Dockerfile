@@ -11,7 +11,7 @@ FROM ghcr.io/nginxinc/alpine-fips:0.1.1-alpine3.18 as alpine-fips
 
 
 ############################################# Base image for Alpine #############################################
-FROM nginx:1.25.3-alpine AS alpine
+FROM nginx:1.29.3-alpine AS alpine
 
 RUN --mount=type=bind,from=alpine-opentracing-lib,target=/tmp/ot/ \
 	apk add --no-cache libcap libstdc++ \
@@ -21,7 +21,7 @@ RUN --mount=type=bind,from=alpine-opentracing-lib,target=/tmp/ot/ \
 
 
 ############################################# Base image for Debian #############################################
-FROM nginx:1.25.3 AS debian
+FROM nginx:1.29.3 AS debian
 
 RUN --mount=type=bind,from=opentracing-lib,target=/tmp/ot/ \
 	apt-get update \
